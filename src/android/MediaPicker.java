@@ -54,6 +54,9 @@ public class MediaPicker extends CordovaPlugin {
         if (mCallbackContext != null) {
             if (REQUEST_PICK_AUDIO == requestCode) {
                 if (Activity.RESULT_OK == resultCode) {
+                    PluginResult result = new PluginResult(PluginResult.Status.OK, "Loading");
+                    result.setKeepCallback(true);
+                    mCallbackContext.sendPluginResult(result);
                     Uri uri = intent.getData();
                     String extension = getUriExtension(uri);
                     if (extension != null) {
