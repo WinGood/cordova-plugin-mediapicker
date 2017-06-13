@@ -16,7 +16,6 @@
     mediaPicker.delegate = self;
     mediaPicker.allowsPickingMultipleItems = [msong isEqualToString:@"true"];
     mediaPicker.showsCloudItems = [iCloudItems isEqualToString:@"true"];
-    mediaPicker.prompt = NSLocalizedString (@"Add songs to play", "Prompt in media item picker");
 
     [self.viewController presentViewController:mediaPicker animated:YES completion:nil];
 
@@ -74,6 +73,9 @@
     if (mediaItemCollection) {
 
         songsList = [[NSMutableArray alloc] init];
+        plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Loading"];
+        [plresult setKeepCallbackAsBool:YES];
+        [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
 
         NSArray *allSelectedSongs = [mediaItemCollection items];
 
