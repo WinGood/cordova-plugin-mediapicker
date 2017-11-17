@@ -200,21 +200,25 @@
                     case AVAssetExportSessionStatusCancelled:{
                         NSLog(@"AVAssetExportSessionStatusCancelled");
                         plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Cancelled"];
+                        [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
                         break;
                     }
                     case AVAssetExportSessionStatusUnknown:{
                         NSLog(@"AVAssetExportSessionStatusCancelled");
                         plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Unknown"];
+                        [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
                         break;
                     }
                     case AVAssetExportSessionStatusWaiting:{
                         NSLog(@"AVAssetExportSessionStatusWaiting");
                         plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Waiting"];
+                        [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
                         break;
                     }
                     case AVAssetExportSessionStatusExporting:{
                         NSLog(@"AVAssetExportSessionStatusExporting");
                         plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Exporting"];
+                        [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
                         break;
                     }
 
