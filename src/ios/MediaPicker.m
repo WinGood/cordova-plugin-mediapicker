@@ -191,6 +191,9 @@
                         if (completed == selcount) {
                             plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsArray:songsList];
                             [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
+                        } else {
+                            plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@""];
+                            [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
                         }
                         break;
                     }
