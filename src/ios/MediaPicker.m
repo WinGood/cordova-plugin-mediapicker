@@ -141,8 +141,8 @@
                     case AVAssetExportSessionStatusFailed:{
                         NSError *exportError = exporter.error;
                         NSLog(@"AVAssetExportSessionStatusFailed = %@",exportError);
-                        NSString *errmsg = [exportError description];
-                        plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errmsg];
+                        plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"The operation could not be completed"];
+                        [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
                         break;
                     }
                     case AVAssetExportSessionStatusCompleted:{
@@ -224,6 +224,8 @@
 
                     default:{
                         NSLog(@"Didnt get any status");
+                        plresult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Didnt get any status"];
+                        [self.commandDelegate sendPluginResult:plresult callbackId:callbackID];
                         break;
                     }
                 }
